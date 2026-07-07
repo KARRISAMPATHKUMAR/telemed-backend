@@ -17,11 +17,14 @@ public class ChatController {
         this.groqService = groqService;
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "Backend is working!";
+    }
+
     @PostMapping
     public ChatResponse chat(@RequestBody ChatRequest request) {
-
         String reply = groqService.chat(request.getMessage());
-
         return new ChatResponse(reply);
     }
 }
